@@ -1,0 +1,43 @@
+default_language_version:
+  python: python3.11
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-toml
+      - id: pretty-format-json
+        exclude: '(^.vscode/|^docs/api-contract/training-platform-api.json|^docs/api-contract/current-api-contract.json)'
+      - id: check-yaml
+        exclude: "^mkdocs.yml"
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.277
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+
+  - repo: https://github.com/ambv/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.14.0
+    hooks:
+      - id: pip-compile
+        name: pip-compile requirements.int
+        args: [requirements/requirements.in, --pre]
+        files: ^(requirements/requirements.in|pyproject.toml)$
+      - id: pip-compile
+        name: pip-compile requirements-docs.in
+        args: [requirements/requirements-docs.in]
+        files: ^(requirements/requirements-docs.in|pyproject.toml)$
+      - id: pip-compile
+        name: pip-compile requirements-dev.in
+        args: [requirements/requirements-dev.in]
+        files: ^(requirements/requirements-dev.in|pyproject.toml)$
