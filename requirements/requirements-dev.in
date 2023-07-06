@@ -1,0 +1,8 @@
+mypy
+ruff
+black
+hatch
+hatch-requirements-txt
+pip-tools
+pre-commit
+sqlalchemy-stubs
