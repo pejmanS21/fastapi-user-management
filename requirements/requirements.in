@@ -1,4 +1,10 @@
+# FastAPI
 fastapi
-pydantic[email]
-sqlalchemy
 uvicorn
+
+# Schema
+pydantic[email]
+pydantic-settings
+
+# Database
+sqlalchemy
