@@ -1,0 +1,31 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.1.1
+
+
+workflows:
+  sample:  # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+    jobs:
+      - test-stage
+
+jobs:
+  test-stage: # this can be any name you choose
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pip-dependency-file: requirements/requirements.txt
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements/requirements-dev.txt
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements/requirements-test.txt
+          pkg-manager: pip
+      - run:
+          name: Run tests
+          command: python -m pytest
