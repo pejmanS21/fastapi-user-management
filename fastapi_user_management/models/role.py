@@ -27,3 +27,11 @@ class RoleModel(Base):
     name: Mapped[RoleNames] = mapped_column(
         Enum(RoleNames), nullable=False, unique=True
     )
+
+    def __repr__(self) -> str:
+        """Database object representation.
+
+        Returns:
+            str: object
+        """
+        return f"<Role(name={self.name})>"
