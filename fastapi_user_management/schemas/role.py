@@ -8,3 +8,9 @@ class RoleBase(BaseModel):
     """Base Schema for role."""
 
     name: RoleNames | None = None
+
+
+class RoleCreate(RoleBase):
+    """Schema for role creation."""
+
+    name: RoleNames
