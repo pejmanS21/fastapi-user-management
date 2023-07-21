@@ -8,3 +8,9 @@ pydantic-settings
 
 # Database
 sqlalchemy
+
+# Encrypt
+passlib[bcrypt]
+
+# JWT
+python-jose[cryptography]
