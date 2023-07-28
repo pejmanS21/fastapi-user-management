@@ -33,7 +33,7 @@ class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
         """
         return db.execute(
             select(self.model).where(self.model.username == username)
-        ).scalar_one()
+        ).scalar_one_or_none()
 
     def create(self, db: Session, *, obj_in: BaseUserCreate) -> UserModel:
         """Create new user.
@@ -62,7 +62,7 @@ class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
                 if obj_in.password is not None
                 else secrets.token_urlsafe(PASSWORD_LENGTH)
             ),
-            created_at=datetime.now(),
+            created_at=datetime.utcnow(),
             status=(
                 obj_in.status if obj_in.status is not None else UserStatusValues.PENDING
             ),
@@ -161,7 +161,7 @@ class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
         """
         admin_role = db.execute(
             select(RoleModel).where(RoleModel.name == RoleNames.ADMIN)
-        ).scalar_one()
+        ).scalar_one_or_none()
         return admin_role in db_obj.roles
 
 

@@ -24,7 +24,7 @@ class CRUDRole(CRUDBase[RoleModel, RoleBase, RoleCreate]):
         """
         return db.execute(
             select(self.model).where(self.model.name == role_obj.name)
-        ).one_or_none()
+        ).scalar_one_or_none()
 
     def create(self, db: Session, *, obj_in: RoleBase) -> RoleModel:
         """Creat new role in database.
