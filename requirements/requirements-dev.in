@@ -1,9 +1,16 @@
+# Lint Tools
 mypy
 ruff
 black
-hatch
-hatch-requirements-txt
-pip-tools
 pre-commit
+
+# Dependency manager
+pip-tools
+
+# Extras
 sqlalchemy-stubs
 types-python-jose
+
+# Package Buildsystem
+hatch
+hatch-requirements-txt

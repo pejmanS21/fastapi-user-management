@@ -1,6 +1,7 @@
 # FastAPI
 fastapi
 uvicorn
+python-multipart
 
 # Schema
 pydantic[email]
@@ -9,8 +10,14 @@ pydantic-settings
 # Database
 sqlalchemy
 
+# Database Migrations
+alembic
+
 # Encrypt
 passlib[bcrypt]
 
 # JWT
 python-jose[cryptography]
+
+# Configuration
+omegaconf
