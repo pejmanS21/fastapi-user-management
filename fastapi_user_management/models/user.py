@@ -67,3 +67,14 @@ class UserModel(Base):
         if "@" not in username:
             raise ValueError("Failed simple email validation")
         return username
+
+    def __repr__(self) -> str:
+        """Database object representation.
+
+        Returns:
+            str: object
+        """
+        return (
+            f"<User(username={self.username}, fullname={self.fullname},"
+            f" status={self.status})>"
+        )

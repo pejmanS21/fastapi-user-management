@@ -1,5 +1,8 @@
+# pytest setup
 pytest
 pytest-cov
 pytest-mock
 pytest-order
 coverage-badge
+# Generate random user info
+mimesis

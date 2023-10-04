@@ -126,6 +126,10 @@ tomlkit==0.11.8
     # via hatch
 trove-classifiers==2023.5.24
     # via hatchling
+types-pyasn1==0.4.0.6
+    # via types-python-jose
+types-python-jose==3.3.4.8
+    # via -r requirements/requirements-dev.in
 typing-extensions==4.7.1
     # via
     #   mypy

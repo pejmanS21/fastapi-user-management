@@ -26,6 +26,7 @@ class BaseUserCreate(UserBase):
 
     fullname: str
     username: EmailStr
+    password: str | None = None
     roles: list[RoleBase]
 
 
@@ -34,7 +35,7 @@ class UserCreate(BaseUserCreate):
 
     fullname: str
     username: EmailStr
-    password: str | None = None
+    password: str
     roles: list[RoleBase]
 
 

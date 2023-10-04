@@ -13,8 +13,7 @@ from fastapi_user_management.models.base import Base
 def db_session():
     """SQLAlchemy session instance."""
     # set up
-    engine = create_engine("sqlite+pysqlite:///test-db.sqlite3", pool_pre_ping=True)
-    # engine = create_engine("sqlite+pysqlite://:memory:", pool_pre_ping=True)
+    engine = create_engine("sqlite+pysqlite:///:memory:", pool_pre_ping=True)
     TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
     # Initialize database tables
