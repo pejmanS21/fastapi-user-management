@@ -10,24 +10,24 @@ repos:
       - id: check-added-large-files
       - id: check-toml
       - id: pretty-format-json
-        exclude: '(^.vscode/|^docs/api-contract/training-platform-api.json|^docs/api-contract/current-api-contract.json)'
+        exclude: '(^.vscode/)'
       - id: check-yaml
         exclude: "^mkdocs.yml"
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.277
+    rev: v0.0.292
     hooks:
       - id: ruff
         args:
           - --fix
 
   - repo: https://github.com/ambv/black
-    rev: 23.3.0
+    rev: 23.9.1
     hooks:
       - id: black
 
   - repo: https://github.com/jazzband/pip-tools
-    rev: 6.14.0
+    rev: 7.3.0
     hooks:
       - id: pip-compile
         name: pip-compile requirements.in
