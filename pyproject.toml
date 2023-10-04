@@ -16,16 +16,16 @@ classifiers = [
 
 description = "Project to learn FastAPI & SQLAlchemy"
 readme = "README.md"
-requires-python = ">=3.11, <=3.12"
+requires-python = ">=3.11, <3.13"
 keywords = [
-    "API",
-    "FastAPI",
-    "SQLAlchemy"
+  "API",
+  "FastAPI",
+  "SQLAlchemy"
 ]
 dynamic = [
-    "version",
-    "dependencies",
-    "optional-dependencies"
+  "version",
+  "dependencies",
+  "optional-dependencies"
 ]
 
 [project.urls]
@@ -43,10 +43,10 @@ dev = ["requirements/requirements-dev.in"]
 docs = ["requirements/requirements-docs.in"]
 test = ["requirements/requirements-test.in"]
 all = [
-    "requirements/requirements.in",
-    "requirements/requirements-dev.in",
-    "requirements/requirements-docs.in",
-    "requirements/requirements-test.in"
+  "requirements/requirements.in",
+  "requirements/requirements-dev.in",
+  "requirements/requirements-docs.in",
+  "requirements/requirements-test.in"
 ]
 
 # --------------------- Linting Tools ---------------------
@@ -81,26 +81,36 @@ preview = true
 
 [tool.ruff]
 select = [
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "C",  # flake8-comprehensions
-    "B",  # flake8-bugbear
-    "UP", # pyupgrade
-    "D",  # pydocstyle
-    "W",  # pep8 warnings
-    "T",  # flake8-todos
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",  # pyflakes
+  "I",  # isort
+  "C",  # flake8-comprehensions
+  "B",  # flake8-bugbear
+  "UP", # pyupgrade
+  "D",  # pydocstyle
+  "W",  # pep8 warnings
+  "T",  # flake8-todos
 ]
 ignore = [
-    "E501",  # line too long, handled by black
-    "B008",  # do not perform function calls in argument defaults
-    "C901",  # too complex
+  "E501",  # line too long, handled by black
+  "B008",  # do not perform function calls in argument defaults
+  "C901",  # too complex
 ]
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["D104"]
 "tests/*.py" = [
   "D100",
+]
+"fastapi_user_management/alembic/versions/*.py" = [
+  "D",
+]
+"fastapi_user_management/alembic/env.py" = [
+  "D",
+  "I",
+  "W",
+  "E",
+  "UP",
 ]
 
 [tool.ruff.pydocstyle]
@@ -108,9 +118,10 @@ convention = "google"
 
 [tool.ruff.isort]
 known-third-party = [
-    "fastapi",
-    "pydantic",
-    "sqlalchemy"
+  "fastapi",
+  "pydantic",
+  "sqlalchemy",
+  "alembic"
 ]
 
 # --------------------- PyTest & Coverage ---------------------
