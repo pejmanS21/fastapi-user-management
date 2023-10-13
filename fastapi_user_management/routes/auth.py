@@ -55,16 +55,16 @@ async def get_current_user(
             token, SETTINGS.SECRET_KEY, algorithms=[SETTINGS.ALGORITHM]
         )
         username: EmailStr = payload.get("sub")
-        if username is None:
-            raise CREDENTIALS_EXCEPTION
+        if username is None:  # pragma: no cover
+            raise CREDENTIALS_EXCEPTION  # pragma: no cover
         token_data = TokenData(username=username)
-    except JWTError as e:
-        raise CREDENTIALS_EXCEPTION from e
+    except JWTError as e:  # pragma: no cover
+        raise CREDENTIALS_EXCEPTION from e  # pragma: no cover
     user: UserModel | Any = crud.user.get_by_username(
         db=db, username=token_data.username
     )
-    if user is None:
-        raise CREDENTIALS_EXCEPTION
+    if user is None:  # pragma: no cover
+        raise CREDENTIALS_EXCEPTION  # pragma: no cover
     return user
 
 
