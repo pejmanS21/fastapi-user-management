@@ -16,3 +16,20 @@ class PasswordMatchError(Exception):
         """
         self.message = message
         super().__init__(message)
+
+
+class UserExistError(Exception):
+    """UserExistError Custom error.
+
+    Custom error that occur when user exist in database and try to create another user with same information.
+    """
+
+    def __init__(self, message: str = "Username already exist!") -> None:
+        """Initiate custom error.
+
+        Args:
+            message (str): error message to display, \
+                default is set to 'Username already exist!'.
+        """
+        self.message = message
+        super().__init__(message)
