@@ -37,3 +37,21 @@ def test_app() -> Generator[TestClient, None, None]:
         yield test_client
 
     # tear down
+
+
+@pytest.fixture(scope="session")
+def valid_credentials() -> dict[str, str]:
+    """Correct User."""
+    return {"username": "admin@gmail.com", "password": "super-secret"}
+
+
+@pytest.fixture(scope="session")
+def invalid_credentials() -> dict[str, str]:
+    """Invalid User."""
+    return {"username": "admin@gmail.com", "password": "invalidpassword"}
+
+
+@pytest.fixture(scope="session")
+def missing_credentials() -> dict:
+    """Empty credentials."""
+    return {}
