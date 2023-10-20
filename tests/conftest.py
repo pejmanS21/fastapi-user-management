@@ -1,12 +1,16 @@
 from collections.abc import Generator
+from typing import Any
 
 import pytest
 from fastapi.testclient import TestClient
+from mimesis import Locale, Person
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from fastapi_user_management.app import app
 from fastapi_user_management.models.base import Base
+from fastapi_user_management.models.role import RoleNames
+from fastapi_user_management.models.user import UserStatusValues
 
 
 @pytest.fixture(scope="session")
@@ -55,3 +59,29 @@ def invalid_credentials() -> dict[str, str]:
 def missing_credentials() -> dict:
     """Empty credentials."""
     return {}
+
+
+@pytest.fixture(scope="session")
+def new_user_data() -> dict[str, Any]:
+    """Fixture for a user data used in creating a new user."""
+    person = Person(Locale.EN)
+    return {
+        "fullname": person.full_name(),
+        "username": person.email(),
+        "password": person.password(),
+        "status": UserStatusValues.ACTIVE,
+        "roles": [{"name": RoleNames.USER}],
+    }
+
+
+@pytest.fixture(scope="session")
+def existing_user_data() -> dict[str, Any]:
+    """Fixture for an existing user data."""
+    person = Person(Locale.EN)
+    return {
+        "fullname": person.full_name(),
+        "username": person.email(unique=True),
+        "password": person.password(),
+        "status": UserStatusValues.PENDING,
+        "roles": [{"name": RoleNames.USER}],
+    }

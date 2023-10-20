@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from fastapi_user_management import crud
 from fastapi_user_management.crud.crud_base import CRUDBase
-from fastapi_user_management.errors.exceptions import PasswordMatchError
+from fastapi_user_management.errors.exceptions import PasswordMatchError, UserExistError
 from fastapi_user_management.models.role import RoleModel, RoleNames
 from fastapi_user_management.models.user import UserModel, UserStatusValues
 from fastapi_user_management.schemas.user import BaseUserCreate, UserCreate, UserUpdate
@@ -21,7 +21,7 @@ PASSWORD_LENGTH = 8
 class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
     """CRUD for user database model."""
 
-    def get_by_username(self, db: Session, *, username: EmailStr) -> UserModel | Any:
+    def get_by_username(self, db: Session, *, username: EmailStr) -> UserModel | None:
         """Get user by username.
 
         Args:
@@ -29,7 +29,7 @@ class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
             username (EmailStr): username
 
         Returns:
-            UserModel | Any: selected user
+            UserModel | None: selected user
         """
         return db.execute(
             select(self.model).where(self.model.username == username)
@@ -45,6 +45,8 @@ class CRUDUser(CRUDBase[UserModel, BaseUserCreate | UserCreate, UserUpdate]):
         Returns:
             UserModel: created user
         """
+        if self.get_by_username(db=db, username=obj_in.username):
+            raise UserExistError
         roles: list[RoleModel] = []
         for role_obj in obj_in.roles:
             role = (
