@@ -1,4 +1,5 @@
 """Token provider endpoint for JWT."""
+
 from datetime import timedelta
 from typing import Annotated, Any
 

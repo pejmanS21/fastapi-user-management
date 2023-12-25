@@ -1,4 +1,5 @@
 """CRUD module for UserModel table."""
+
 import secrets
 from datetime import datetime
 from typing import Any
