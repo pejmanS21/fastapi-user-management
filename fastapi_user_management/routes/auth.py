@@ -1,4 +1,5 @@
 """Token provider endpoint for JWT."""
+
 from datetime import timedelta
 from typing import Annotated, Any
 
@@ -69,7 +70,7 @@ async def get_current_user(
 
 
 async def get_current_active_user(
-    current_user: Annotated[UserBase, Depends(get_current_user)]
+    current_user: Annotated[UserBase, Depends(get_current_user)],
 ) -> UserBase:
     """Check if user is active or not.
 

@@ -1,4 +1,5 @@
 """Module to define User schemas."""
+
 from pydantic import BaseModel, EmailStr
 
 from fastapi_user_management.models.user import UserStatusValues

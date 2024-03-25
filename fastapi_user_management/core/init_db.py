@@ -1,4 +1,5 @@
 """Initiate Database and create admin user."""
+
 from typing import Any
 
 from sqlalchemy.orm import Session

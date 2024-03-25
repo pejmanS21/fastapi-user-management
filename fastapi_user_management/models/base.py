@@ -1,4 +1,5 @@
 """Define Declarative Base for tables."""
+
 from sqlalchemy.orm import DeclarativeBase
 
 

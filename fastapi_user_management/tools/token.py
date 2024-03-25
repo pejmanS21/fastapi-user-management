@@ -1,4 +1,5 @@
 """Token generation function."""
+
 from datetime import datetime, timedelta
 
 from jose import jwt

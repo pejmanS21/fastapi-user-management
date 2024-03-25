@@ -3,7 +3,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -14,20 +14,20 @@ repos:
       - id: check-yaml
         exclude: "^mkdocs.yml"
 
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.292
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.4
     hooks:
       - id: ruff
         args:
           - --fix
 
-  - repo: https://github.com/ambv/black
-    rev: 23.9.1
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
     hooks:
       - id: black
 
   - repo: https://github.com/jazzband/pip-tools
-    rev: 7.3.0
+    rev: 7.4.1
     hooks:
       - id: pip-compile
         name: pip-compile requirements.in

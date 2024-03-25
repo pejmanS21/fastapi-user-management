@@ -1,4 +1,5 @@
 """Define schame for auth."""
+
 from pydantic import BaseModel, EmailStr
 
 
