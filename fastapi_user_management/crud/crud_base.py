@@ -1,4 +1,5 @@
 """Base CRUD module for inheritance."""
+
 from typing import Any, Generic, TypeVar
 
 from fastapi.encoders import jsonable_encoder

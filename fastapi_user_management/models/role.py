@@ -1,4 +1,5 @@
 """Define Role Model Table."""
+
 from enum import StrEnum, auto
 
 from sqlalchemy import Enum, Integer

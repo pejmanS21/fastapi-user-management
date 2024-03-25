@@ -1,4 +1,5 @@
 """CRUD module for RoleModel table."""
+
 from typing import Any
 
 from sqlalchemy import select
